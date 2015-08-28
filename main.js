@@ -143,6 +143,8 @@ function shellSort (a) {
 function testRunningTime(sorts){
     var arrayLength;
     
+    var runtimes = [];
+
     function populate (n) {
         var a = []; 
         for (var i = 0; i < n; i++ ) {
@@ -195,7 +197,15 @@ function testRunningTime(sorts){
             var executionAvg = executionSum/3;
             overallExecutionAvg += executionAvg;
         }
-        console.log("...\t" + (overallExecutionAvg/3).toFixed(6) + " ms \tfor " + arrayLength + " integers\t" + sorted );
+        var runTime = (overallExecutionAvg/3).toFixed(6);
+        var log = "...\t" + runTime + " ms \tfor " + arrayLength + " integers\t" + sorted;
+        console.log(log);
+
+        $("#log").append("<tr><td>" + sort.name + "</td><td>" + arrayLength + 
+            "</td><td>" + runTime + " ms</td><td>" + sorted + "</td></tr>");
+
+        runtimes.push({name: sort.name, runtime: runTime, arrayLength: arrayLength, sorted: sorted});
+
     }
     
     function isSorted (array, direction){
@@ -218,5 +228,50 @@ function testRunningTime(sorts){
         return 'passed';
     }
     
+    var hundredElements = [];
+    var thousandElements = [];
+    var tenthousandElements = [];
+  
+    for ( var i in runtimes ) {
+        if ( runtimes[i].arrayLength == 100 ) {
+            hundredElements.push(runtimes[i]);
+        } else if ( runtimes[i].arrayLength == 1000 ) {
+            thousandElements.push(runtimes[i]);
+        } else if ( runtimes[i].arrayLength == 10000 ) {
+            tenthousandElements.push(runtimes[i]);
+        }
+    }
+
+    function compareRuntimes(a, b) {
+        return a.runtime - b.runtime;
+    }
+
+    hundredElementsSorted = hundredElements.sort(compareRuntimes);
+    thousandElementsSorted = thousandElements.sort(compareRuntimes);
+    tenthousandElementsSorted = tenthousandElements.sort(compareRuntimes);
+
+    for ( var i in hundredElementsSorted ) {
+        if ( hundredElementsSorted[i].sorted ) {
+            $('#stack-hundred').append("<tr><td>" + hundredElementsSorted[i].name + 
+                "</td><td>" + 
+                hundredElementsSorted[i].runtime.substring(0, 6) + "<td>" + hundredElementsSorted[i].sorted + "</td></tr>");
+        }
+    }
+    for ( var i in thousandElementsSorted ) {
+        if ( thousandElementsSorted[i].sorted ) {
+            $('#stack-thousand').append("<tr><td>" + thousandElementsSorted[i].name + 
+                "</td><td>" + 
+                thousandElementsSorted[i].runtime.substring(0, 6) + "<td>" + thousandElementsSorted[i].sorted + "</td></tr>");
+        }
+    }
+    for ( var i in tenthousandElementsSorted ) {
+        if ( tenthousandElementsSorted[i].sorted ) {
+            $('#stack-tenthousand').append("<tr><td>" + tenthousandElementsSorted[i].name + 
+                "</td><td>" + 
+                tenthousandElementsSorted[i].runtime.substring(0, 6) + "<td>" + tenthousandElementsSorted[i].sorted + "</td></tr>");
+        }
+    }
+    
+    console.log(runtimes);
     console.log("... Done.\n");
 }

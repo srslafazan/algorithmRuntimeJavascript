@@ -1,0 +1,102 @@
+<html lang='en'>
+<head>
+	<title>Sorting Algorithm Runtime Analysis (Javascript)</title>
+	<meta charset='UTF-8'>
+	<meta name='description' content='Shain Lafazan builds apps.'>
+	<meta name="author" content="Shain Lafazan">
+
+<!-- SKELETON CDN -->
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'>
+	<!-- <link rel='stylesheet' href='./static/main.css'> -->
+<!-- JQUERY CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+<!-- SOCKET.IO -->
+	<!-- <script type='text/javascript' src='/socket.io/socket.io.js'></script> -->
+	<!-- <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script> -->
+
+	
+
+<!-- SCRIPTS -->
+	<script type='text/javascript'>
+
+	</script>
+</head>
+<body>
+	<div class='container'>
+		<h1>Sorting Algorithm Runtime Analysis (Javascript)</h1>
+
+		<div class="row">
+			<div class="four columns">
+				<table>
+					<h5>100 Elements</h5>
+					<thead>
+						<tr>
+							<th>Sort</th>
+							<th>Runtime</th>
+							<th>Pass/Fail</th>
+						</tr>
+					</thead>
+					<tbody id='stack-hundred'></tbody>
+				</table>
+			</div>
+
+			<div class="four columns">
+				<table>
+					<h5>1000 Elements</h5>
+					<thead>
+						<tr>
+							<th>Sort</th>
+							<th>Runtime(ms)</th>
+							<th>Pass/Fail</th>
+						</tr>
+					</thead>
+					<tbody id='stack-thousand'></tbody>
+				</table>
+			</div>
+
+			<div class="four columns">
+				<table>
+					<h5>10000 Elements</h5>
+					<thead>
+						<tr>
+							<th>Sort</th>
+							<th>Runtime(ms)</th>
+							<th>Pass/Fail</th>
+						</tr>
+					</thead>
+					<tbody id='stack-tenthousand'></tbody>
+				</table>
+			</div>
+		</div>
+
+
+
+		<div class="row">
+			<div class='twelve columns'>	
+
+				<table id='log-table'>
+					<h3>Runtimes by Sort</h3>
+					<thead>
+						<tr>
+							<th>Sort</th>
+							<th>Array Length</th>
+							<th>Runtime(ms)</th>
+							<th>Passed/Failed</th>
+						</tr>
+					</thead>
+					<tbody id='log'>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+
+
+	<script src="./main.js"></script>
+</body>
+</html>
