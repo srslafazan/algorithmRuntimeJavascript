@@ -23,6 +23,7 @@ If you're feeling lucky, you can change the number of input elements by manipula
 bubbleSort could take about 5 minutes for 100000 elements. 
 
 Optional Assignments/Food-for-thought:
+
 1. Improve the runtime of bubbleSort ( try to swap twice per iteration )
 
 2. Does this quickSort look like it's working properly? Try to find out why it's throwing false positives in our isSorted() function.
