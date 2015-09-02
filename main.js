@@ -3,10 +3,54 @@ var testingSorts = [ mergeSort, bubbleSort, insertionSort, quickSort, shellSort,
 testRunningTime(testingSorts);
 
 // HEAP SORT
-function heapSort (array) {
+function heapSort(arr){
+
+    function swap(data, i, j) {
+        var tmp = data[i];
+        data[i] = data[j];
+        data[j] = tmp;
+    }
+     
+     function heap_sort(arr) {
+        put_array_in_heap_order(arr);
+        var end = arr.length - 1;
+        while(end > 0) {
+            swap(arr, 0, end);
+            sift_element_down_heap(arr, 0, end);
+            end -= 1;
+        }
+        return arr;
+    }
+     
+    function put_array_in_heap_order(arr) {
+        var i = Math.floor( arr.length / 2 - 1 );
+        
+        while (i >= 0) {
+            sift_element_down_heap(arr, i, arr.length);
+            i -= 1;
+        }
+    }
+     
+    function sift_element_down_heap(heap, i, max) {
+        
+        var i_big, c1, c2;
+        while(i < max) {
+            i_big = i;
+            c1 = 2*i + 1;
+            c2 = c1 + 1;
+            if (c1 < max && heap[c1] > heap[i_big])
+                i_big = c1;
+            if (c2 < max && heap[c2] > heap[i_big])
+                i_big = c2;
+            if (i_big == i) {
+                return;
+            }
+            swap(heap,i, i_big);
+            i = i_big;
+        }
+    }
     
-    
-    return array;
+    return heap_sort(arr);
 }
 
 
@@ -162,7 +206,7 @@ function testRunningTime(sorts){
         console.log('... beginning tests: ');
         for (var i = 0; i < sorts.length; i++) {
             console.log("Testing \"" + sorts[i].name + "\": ");
-            for ( var len = 0; len < 3; len++ ){
+            for ( var len = 0; len < 4; len++ ){
                 arrayLength = Math.pow(10, len + 2);
                 test(sorts[i], arrayLength);
             }
@@ -192,6 +236,9 @@ function testRunningTime(sorts){
                 
                 executionSum += executionTime;
                 sorted = isSorted(sort(arr));
+                if (!sorted) {
+                    sorted = isSorted(sort(arr, 'asc'));
+                }
             }
             
             var executionAvg = executionSum/3;
@@ -225,7 +272,12 @@ function testRunningTime(sorts){
             else {
                 return ("haven't implemented direction function yet");
             }
-        return 'passed';
+            if ( direction == 'asc'){
+                return 'passed (asc)';       
+            } else {
+                return 'passed (desc)';
+            }
+        
     }
     
     var hundredElements = [];
