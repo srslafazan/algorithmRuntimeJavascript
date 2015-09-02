@@ -20,4 +20,11 @@ If you're feeling lucky, you can change the number of input elements by manipula
     ... Done.
 
 
-bubbleSort could take about 5 minutes for 100000 elements. These algorithms are not all optimized, so feel free to look for ways to improve their runtime.
+bubbleSort could take about 5 minutes for 100000 elements. 
+
+Optional Assignments/Food-for-thought:
+1. Improve the runtime of bubbleSort ( try to swap twice per iteration )
+2. Does this quickSort look like it's working properly? Try to find out why it's throwing false positives in our isSorted() function.
+3. What are some ways we can improve the runtime of this mergeSort?
+4. Which algorithms are "in-place" sorts?
+5. Which algorithm has the largest space complexity?
