@@ -7,7 +7,7 @@ The testingSorts array accepts functions that take a single array of integers as
 
 You can open index.html in your browser and see results in the console or in the browser window.
 
-If you're feeling lucky, you can change the number of input elements by manipulating arrayLength in the on main.js lines 209 - 211. Example output for arrays of 100, 1000, 10000, 100000 elements:
+If you're feeling lucky, you can change the number of input elements by manipulating arrayLength in the on main.js lines 209 - 211. Anything over 100000 elements could potentially crash your browser. Example output for arrays of 100, 1000, 10000, 100000 elements:
 
     ... beginning tests: 
     
